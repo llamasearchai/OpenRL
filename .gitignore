@@ -1,0 +1,190 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+# Usually these files are written by a script go generate PE files for
+# Windows, so commenting out this section for Linux default.
+# *.manifest
+# *.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# PEP 582; __pypackages__ directory
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath files
+.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# VSCode
+.vscode/
+
+# IDE specific files
+.idea/
+*.iml
+*.iws
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# OSX / macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Rust / Cargo
+target/
+Cargo.lock
+# Ignore cargo crate output folder formaturin
+# For example, when running `maturin build --target x86_64-apple-darwin`
+# This will create a folder named `x86_64-apple-darwin` in the target directory
+target/*
+# Also ignore the release folder created by `maturin build --release`
+target/release/
+# And the debug folder
+target/debug/
+
+# Poetry
+poetry.lock
+
+# Sensitive files
+*.pem
+*.key
+credentials*
+config.json
+secrets.yml
+*.env.*
+!*.env.example
+!*.env.template
+
+# Large data files (if not using Git LFS)
+*.csv
+*.jsonl
+*.parquet
+*.hdf5
+*.h5
+*.model
+*.pt
+*.pth
+*.bin
+*.onnx
+*.pb
+*.tflite
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock

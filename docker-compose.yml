@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  rlhf_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rlhf-engineering-system:latest
+    container_name: rlhf_engineering_app
+    ports:
+      # If your application runs a web server (e.g., FastAPI on port 8000),
+      # uncomment and adjust the port mapping:
+      # - "8000:8000"
+      - "8001:8000" # Example: Map host 8001 to container 8000 if FastAPI uses 8000
+    volumes:
+      # Mount local data or configuration if needed
+      # Example: - ./data:/app/data
+      # Example: - ./config:/app/config
+      # Mount the rlhf package for local development (optional, comment out for production builds)
+      # This allows code changes in `rlhf/` to be reflected without rebuilding the image.
+      # Note: This will overwrite the `rlhf` directory copied into the image during build.
+      # - ./rlhf:/app/rlhf
+      pass
+    environment:
+      # Define any environment variables required by your application
+      # Example: - LOG_LEVEL=INFO
+      # Example: - CUDA_VISIBLE_DEVICES=0,1 # If managing GPU allocation
+      - PYTHONUNBUFFERED=1 # Already in Dockerfile, but can be reinforced here
+    # Healthcheck (optional, depends on your application)
+    # healthcheck:
+    #   test: ["CMD", "curl", "--fail", "http://localhost:8000/health"] # Adjust path and port
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 30s
+    restart: unless-stopped
+    # GPU support (requires Docker Engine configured for NVIDIA GPUs and appropriate base image in Dockerfile)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1 # or 'all'
+    #           capabilities: [gpu]
+
+# Define any named volumes if needed, e.g., for persistent data
+# volumes:
+#   my_data_volume:

@@ -1,0 +1,111 @@
+[tool.poetry]
+name = "rlhf-engineering-system"
+version = "0.1.0"
+description = "Production-ready reinforcement learning engineering system for LLM fine-tuning"
+authors = ["Nik Jois <nikjois@llamasearch.ai>"]
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/llamasearchai/OpenRL"
+packages = [{include = "rlhf", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.12"
+torch = "^2.0.1"
+transformers = "^4.33.0"
+peft = "^0.5.0"
+accelerate = "^0.23.0"
+datasets = "^2.14.5"
+deepspeed = "^0.10.0"
+wandb = "^0.15.10"
+tensorboard = "^2.14.0"
+ray = {extras = ["tune"], version = "^2.6.3"}
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+pydantic = "^2.4.2"
+jsonlines = "^3.1.0"
+safetensors = "^0.3.3"
+typer = "^0.9.0"
+rich = "^13.5.3"
+numpy = "^1.24.4"
+scipy = "^1.11.3"
+pandas = "^2.1.1"
+matplotlib = "^3.8.0"
+seaborn = "^0.12.2"
+pytorch-lightning = "^2.0.9"
+hydra-core = "^1.3.2"
+tqdm = "^4.66.1"
+sentencepiece = "^0.1.99"
+protobuf = "^4.24.3"
+huggingface-hub = "^0.17.3"
+python-dotenv = "^1.0.0"
+psutil = "^5.9.5"
+pyarrow = "^13.0.0"
+omegaconf = "^2.3.0"
+sqlalchemy = "^2.0.21"
+prometheus-client = "^0.17.1"
+dill = "^0.3.7"
+maturin = "^1.2.3"
+pyyaml = "^6.0.1"
+triton = {version = "^2.1.0", optional = true}
+bitsandbytes = {version = "^0.41.1", optional = true}
+flash-attn = {version = "^2.3.3", optional = true}
+optimum = {version = "^1.12.0", optional = true}
+langchain = "^0.0.286"
+dspy = "^2.3.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.2"
+pytest-cov = "^4.1.0"
+black = "^23.9.1"
+isort = "^5.12.0"
+mypy = "^1.5.1"
+flake8 = "^6.1.0"
+pylint = "^3.0.1"
+sphinx = "^7.2.6"
+sphinx-rtd-theme = "^1.3.0"
+pytest-benchmark = "^4.0.0"
+pytest-xdist = "^3.3.1"
+pytest-mock = "^3.11.1"
+pytest-timeout = "^2.1.0"
+pytest-asyncio = "^0.21.1"
+pre-commit = "^3.4.0"
+pytest-profiling = "^1.7.0"
+coverage = "^7.3.2"
+types-PyYAML = "^6.0.12.12"
+types-requests = "^2.31.0.2"
+
+[tool.poetry.extras]
+gpu = ["triton", "bitsandbytes", "flash-attn", "optimum"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "maturin>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+rlhf = "rlhf.cli:app"
+
+[tool.black]
+line-length = 88
+target-version = ["py39", "py310", "py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "--cov=rlhf --cov-report=xml --cov-report=term-missing"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "distributed: marks tests that require distributed setup",
+    "gpu: marks tests that require GPU",
+]
